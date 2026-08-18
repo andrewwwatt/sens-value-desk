@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratings Tracker — SENS Value Desk</title>
+<style>
+  :root { --bull: #1a7f37; --bear: #c0341d; --neutral: #9a6b00; --ink: #1c1c1c; --muted: #6b6b6b; --border: #e3e1db; --bg: #fafaf8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--ink); line-height: 1.55; }
+  header { padding: 28px 20px 18px; border-bottom: 3px solid var(--ink); max-width: 900px; margin: 0 auto; }
+  header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  header .tagline { font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  nav.sitenav { max-width: 900px; margin: 12px auto 0; font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; }
+  nav.sitenav a { color: #205081; text-decoration: none; margin-right: 16px; }
+  nav.sitenav a:hover { text-decoration: underline; }
+  main { max-width: 900px; margin: 0 auto; padding: 20px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; font-family: Helvetica, Arial, sans-serif; font-size: 0.88rem; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  th { background: #f3f2ee; font-weight: 700; }
+  .rating { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 3px; color: #fff; white-space: nowrap; }
+  .rating.BULLISH { background: var(--bull); }
+  .rating.BEARISH { background: var(--bear); }
+  .rating.NEUTRAL { background: var(--neutral); }
+  footer { max-width: 900px; margin: 0 auto; padding: 20px; font-family: Helvetica, Arial, sans-serif; font-size: 0.78rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SENS Value Desk — Ratings Tracker</h1>
+  <div class="tagline">Every rating issued to date, in one place</div>
+  <nav class="sitenav">
+    <a href="index.html">Today</a>
+    <a href="archive/index.html">Archive</a>
+    <a href="ratings.html">Ratings Tracker</a>
+  </nav>
+</header>
+
+<main>
+  <table>
+    <tr><th>Date</th><th>Company</th><th>Ticker</th><th>Rating</th><th>Trigger</th></tr>
+    <tr><td>17 Aug 2026</td><td>Thungela Resources</td><td>TGA</td><td><span class="rating BULLISH">BULLISH</span></td><td>Interim results + dividend</td></tr>
+    <tr><td>17 Aug 2026</td><td>The SPAR Group</td><td>SPP</td><td><span class="rating BEARISH">BEARISH</span></td><td>Chairman &amp; deputy chair resignation</td></tr>
+    <tr><td>17 Aug 2026</td><td>RCL Foods</td><td>RCL</td><td><span class="rating BEARISH">BEARISH</span></td><td>Trading statement</td></tr>
+    <tr><td>17 Aug 2026</td><td>South Ocean Holdings</td><td>SOH</td><td><span class="rating NEUTRAL">NEUTRAL</span></td><td>Trading statement</td></tr>
+    <tr><td>14 Aug 2026</td><td>KAP Limited</td><td>KAP</td><td><span class="rating NEUTRAL">NEUTRAL</span></td><td>Trading statement</td></tr>
+    <tr><td>14 Aug 2026</td><td>Exxaro Resources</td><td>EXX</td><td><span class="rating NEUTRAL">NEUTRAL</span></td><td>Trading statement</td></tr>
+    <tr><td>14 Aug 2026</td><td>Copper 360</td><td>CPR</td><td><span class="rating BEARISH">BEARISH</span></td><td>Annual results</td></tr>
+  </table>
+</main>
+
+<footer>
+  SENS Value Desk · Independent JSE SENS analysis, built for comparison against tickertalk.co.za · Not financial advice
+</footer>
+
+</body>
+</html>
