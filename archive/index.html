@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Archive — SENS Value Desk</title>
 <style>
-  :root { --ink: #1c1c1c; --muted: #6b6b6b; --border: #e3e1db; --bg: #fafaf8; }
+  :root {
+    --bull: #1a7f37;
+    --bear: #c0341d;
+    --neutral: #9a6b00;
+    --bg: #fafaf8;
+    --card: #ffffff;
+    --ink: #1c1c1c;
+    --muted: #6b6b6b;
+    --border: #e3e1db;
+  }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--ink); line-height: 1.55; }
   header { padding: 28px 20px 18px; border-bottom: 3px solid var(--ink); max-width: 860px; margin: 0 auto; }
@@ -15,11 +24,73 @@
   nav.sitenav a { color: #205081; text-decoration: none; margin-right: 16px; }
   nav.sitenav a:hover { text-decoration: underline; }
   main { max-width: 860px; margin: 0 auto; padding: 20px; }
-  ul.editions { list-style: none; padding: 0; }
-  ul.editions li { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px 20px; margin-bottom: 12px; font-family: Helvetica, Arial, sans-serif; }
-  ul.editions a { color: #205081; text-decoration: none; font-weight: 700; font-size: 1.05rem; }
-  ul.editions a:hover { text-decoration: underline; }
-  ul.editions .meta { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+  details.review-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  details.review-item[open] { padding-bottom: 4px; }
+  summary.review-summary {
+    cursor: pointer;
+    padding: 16px 20px;
+    list-style: none;
+  }
+  summary.review-summary::-webkit-details-marker { display: none; }
+  summary.review-summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 8px;
+    color: var(--muted);
+    font-family: Helvetica, Arial, sans-serif;
+    transition: transform 0.15s ease;
+  }
+  details[open] summary.review-summary::before {
+    transform: rotate(90deg);
+  }
+  .summary-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .summary-left { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .company { font-size: 1.1rem; font-weight: bold; }
+  .ticker { font-family: Helvetica, Arial, sans-serif; color: var(--muted); font-size: 0.9rem; }
+  .review-num {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--muted);
+    background: #f3f2ee;
+    border-radius: 3px;
+    padding: 2px 7px;
+  }
+  .date-tag { font-family: Helvetica, Arial, sans-serif; font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
+  .rating {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .rating.BULLISH { background: var(--bull); }
+  .rating.BEARISH { background: var(--bear); }
+  .rating.NEUTRAL { background: var(--neutral); }
+  .headline { font-style: italic; color: var(--muted); margin: 2px 0 6px; font-size: 0.92rem; }
+  .verdict-preview { font-family: Helvetica, Arial, sans-serif; font-size: 0.9rem; color: #333; }
+  .details-body { padding: 4px 20px 18px; border-top: 1px dashed var(--border); margin-top: 4px; }
+  .details-body .analysis p { margin: 12px 0; font-size: 0.96rem; }
+  .metrics { font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 10px; margin-top: 10px; }
+  .metrics b { color: var(--ink); }
+  .data-note { font-family: Helvetica, Arial, sans-serif; font-size: 0.78rem; color: #a35b00; margin-top: 6px; }
+  .source { font-family: Helvetica, Arial, sans-serif; font-size: 0.82rem; margin-top: 10px; }
+  .source a { color: #205081; }
   footer { max-width: 860px; margin: 0 auto; padding: 20px; font-family: Helvetica, Arial, sans-serif; font-size: 0.78rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); }
 </style>
 </head>
@@ -36,16 +107,203 @@
 </header>
 
 <main>
-  <ul class="editions">
-    <li>
-      <a href="17-aug-2026.html">17 August 2026</a>
-      <div class="meta">4 reviews · 1 Bullish, 1 Neutral, 2 Bearish · Thungela, SPAR, RCL Foods, South Ocean Holdings</div>
-    </li>
-    <li>
-      <a href="14-aug-2026.html">14 August 2026 (proof-of-concept run)</a>
-      <div class="meta">3 reviews · 2 Neutral, 1 Bearish · KAP, Exxaro, Copper 360</div>
-    </li>
-  </ul>
+
+  <details class="review-item">
+    <summary class="review-summary">
+      <div class="summary-top">
+        <div class="summary-left">
+          <span class="rating BULLISH">BULLISH</span>
+          <span class="company">Thungela Resources</span>
+          <span class="ticker">(TGA)</span>
+          <span class="review-num">Review #1</span>
+        </div>
+        <span class="date-tag">17 Aug 2026</span>
+      </div>
+      <div class="headline">Interim Results for the Six Months Ended 30 June 2026 and R5.50 Interim Dividend Declaration</div>
+      <div class="verdict-preview">EPS up 467% to R10.95, adjusted operating free cash flow up 291% to R1.9bn, net cash R6.1bn, and a R5.50 interim dividend — nearly four times last year's payout. Full-year guidance reaffirmed. This is a debt-free coal exporter converting a cyclical price recovery straight into cash.</div>
+    </summary>
+    <div class="details-body">
+      <div class="analysis">
+        <p>Thungela's H1 2026 numbers are a clean beat on its own 7 August trading statement, not just a good result in isolation. EPS of R10.95 and HEPS of R4.80 land within (and near the top of) the guided ranges. Revenue rose a modest 2% to R15.2bn — modest only because an 11% stronger average rand ate into what would otherwise have been a much larger increase, given benchmark coal prices ran 15% higher in South Africa and 25% higher in Australia. Adjusted EBITDA nearly doubled to R1.3bn. Export saleable production rose 6% to 8.5Mt, with Ensham in Australia the standout at 2.2Mt versus 1.6Mt a year ago, after finally working through the geological problems that hit H1 2025.</p>
+        <p>The balance sheet is the real story for a value investor. Total debt is essentially zero (R86m against R6.1bn of cash), debt-to-equity of 0.53% is about as close to a fortress balance sheet as a commodity miner gets, and the current ratio of 1.73 confirms ample liquidity. Adjusted operating free cash flow of R1.9bn — nearly four times the prior period, helped by R1.1bn from FX derivative gains — comfortably funds the R5.50 interim dividend (up 175% on last year's R2.00), a total cash distribution of R773m, while still leaving headroom for the Lephalale coal-bed-methane project and the pending Goedehoop North disposal. Management also flagged that South African environmental liabilities should be fully cash-collateralised by year-end once that disposal completes — a genuine de-risking of a liability line that has weighed on SA miners generically.</p>
+        <p>The caveat is the one that always applies to a thermal coal exporter: none of this is durable pricing power. Management itself frames the current price strength as linked to Middle East conflict-driven energy security concerns rather than a structural re-rating of coal demand, and flags downside risk from softening industrial demand and competing low-cost supply. But that's a reason to size the position for cyclicality, not a reason to avoid a company trading with a net cash balance sheet, reaffirmed guidance, and a management team that is visibly prioritising cash return over empire-building. Rating: BULLISH. At current levels this is a self-funding, debt-free cash compounder in a cyclical industry — the risk is the commodity cycle, not the balance sheet or the capital allocation.</p>
+      </div>
+      <div class="metrics">
+        Review price: <b>R107.45</b> (17 Aug 2026, close) &nbsp;·&nbsp; P/B (mrq): <b>~0.85x</b> &nbsp;·&nbsp; Total debt/equity: <b>0.53%</b> &nbsp;·&nbsp; Net cash: <b>R6.1bn</b>
+        <div class="data-note">Yahoo Finance trailing-twelve-month P/E and ROE reflect the loss-making FY2025 period and are stale as of this H1 2026 turnaround — not shown to avoid misleading comparison; P/B is from most recent quarter and is broadly current.</div>
+      </div>
+      <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260817080000&seq=12&scode=">SENS via Sharenet, 17 Aug 2026 08:00</a></div>
+    </div>
+  </details>
+
+  <details class="review-item">
+    <summary class="review-summary">
+      <div class="summary-top">
+        <div class="summary-left">
+          <span class="rating BEARISH">BEARISH</span>
+          <span class="company">The SPAR Group</span>
+          <span class="ticker">(SPP)</span>
+          <span class="review-num">Review #1</span>
+        </div>
+        <span class="date-tag">17 Aug 2026</span>
+      </div>
+      <div class="headline">Resignation of Chairman and Deputy Chair, Appointment of Interim Chairman and Update on Board Succession</div>
+      <div class="verdict-preview">Chairman Mike Bosman and Deputy Chair Shirley Zinn both resign the same day — the third leadership upheaval since 2022. This lands on a balance sheet already carrying debt-to-equity above 300% and a current ratio under 1.0. Governance crisis meeting financial fragility is a bad combination.</div>
+    </summary>
+    <div class="details-body">
+      <div class="analysis">
+        <p>The SENS announcement itself is carefully neutral — both directors "concluded that stepping down… is the right decision for them," the board "reaffirms its full and unqualified support" for the CEO and CFO, and "the Group's turnaround strategy and current guidance remain unaffected." Taken at face value, this reads like an orderly, voluntary transition. But context matters: Bosman was appointed Chairman in December 2022 specifically to stabilise the board after "serious governance matters" at the time, briefly served as Executive Chairman through October 2023, and is now the third senior leadership figure to depart since that governance crisis began (following a prior chairman and two changes of CEO). Zinn, who chaired remuneration and led work on malus/clawback policy, exits at the same time. Risk Committee chair Lwazi Koyana steps in as interim chairman while a permanent succession process runs, explicitly seeking directors with "direct retail, independent retailer and sector experience" — a specific and telling gap in the skills the board felt it needed.</p>
+        <p>That last detail is the signal worth weighing: SPAR's business model depends on independent retailers who own and operate the stores under the SPAR banner. A board that has just lost its chair and deputy chair, and is now recruiting explicitly for retailer relationship experience, suggests the underlying friction with that retailer base — the actual engine of SPAR's earnings — is unresolved, not a personnel matter that ends with two resignations. Repeated leadership churn at this frequency (three changes in under four years, now compounding into a double departure at the top of the board) is itself a governance red flag independent of what triggered any single exit.</p>
+        <p>The financial context makes this a worse time for a leadership vacuum than most. On trailing figures, SPAR carries total debt-to-equity above 300%, a current ratio of 0.99 (current liabilities exceed current assets), a thin trailing profit margin of -0.32%, and return on equity of just 5.76% — weak for a food retailer and well below what its debt load would need to generate an adequate return on borrowed capital. A business with that balance sheet structure needs stable, decisive leadership to manage supplier and lender relationships through a turnaround; instead it now has an interim chair and an unresolved retailer relationship to fix simultaneously. Rating: BEARISH. The board's insistence that strategy and guidance are "unaffected" is the kind of statement that's true right up until it isn't — watch for the permanent chair appointment and any commentary from the Spar Guild retailer body as the next real tests of whether this stabilises or deepens.</p>
+      </div>
+      <div class="metrics">
+        Review price: <b>R43.32</b> (17 Aug 2026, close) &nbsp;·&nbsp; Total debt/equity (mrq): <b>311.6%</b> &nbsp;·&nbsp; Current ratio: <b>0.99</b> &nbsp;·&nbsp; ROE (ttm): <b>5.76%</b> &nbsp;·&nbsp; P/B (mrq): <b>~1.54x</b>
+        <div class="data-note">52-week share price change: -57.8% — this is a business already being priced for distress before today's board news.</div>
+      </div>
+      <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260817070500&seq=1&scode=">SENS via Sharenet, 17 Aug 2026 07:05</a></div>
+    </div>
+  </details>
+
+  <details class="review-item">
+    <summary class="review-summary">
+      <div class="summary-top">
+        <div class="summary-left">
+          <span class="rating BEARISH">BEARISH</span>
+          <span class="company">RCL Foods</span>
+          <span class="ticker">(RCL)</span>
+          <span class="review-num">Review #1</span>
+        </div>
+        <span class="date-tag">17 Aug 2026</span>
+      </div>
+      <div class="headline">Trading Statement — Year Ended June 2026</div>
+      <div class="verdict-preview">HEPS guided down 30-35%, and underlying HEPS (which strips out impairments) is also down 25-30% — this is a genuine operating decline, not an accounting artefact. Sugar is being structurally undercut by untariffed imports, with no resolution date from ITAC.</div>
+    </summary>
+    <div class="details-body">
+      <div class="analysis">
+        <p>RCL guides HEPS down 30-35% to 101.6-109.4c and EPS down 50-55% to 81-90.1c for the year to June 2026. The gap between the two is a 20.3c/share goodwill and brand impairment on the Sunshine cash-generating unit, triggered by volumes that never recovered from a December 2024 labour disruption at its Durban factory — a real, if isolated, operational failure being formally recognised now. But the more important number for a value investor is underlying HEPS, which strips out impairments and one-offs and is still guided down 25-30% to 102.3-109.6c. When the "clean" earnings measure falls by roughly the same magnitude as the headline measure, that tells you this isn't a case of one-off accounting noise flattering or distorting an otherwise sound operating year — the deterioration is real and operational.</p>
+        <p>The driver is almost entirely the Sugar segment and its associate, Royal Eswatini Sugar. With no effective tariff protection in place, deep-sea sugar imports flooded the local market: industry local-market volumes fell 10.3% while export volumes rose 48.3%, into a market where international raw sugar prices fell 22.6% and a stronger rand further compressed realised export proceeds. The statement puts a number on the damage — roughly R7,000/ton, or about 52%, gap between local and export sales prices. Critically, RCL says the tariff question remains unresolved with the International Trade Administration Commission "as at the date of this trading statement" — meaning this is an open-ended policy risk, not a problem with a known resolution date. Pet Food adds a second, separate wound: food-safety production disruptions (previously flagged in March) cut sales volumes 20.5% and drove higher stock write-offs. Culinary and Baking, by contrast, delivered "good performances," which is the one genuinely encouraging data point in the statement.</p>
+        <p>At R8.27, the stock trades on roughly 6.8x trailing earnings and 0.70x book value with a still-respectable trailing ROE of 10.7%, and the balance sheet isn't stressed — debt-to-equity of 22.4% and a current ratio of 1.63 leave room to absorb a bad year. That's the bull case: this looks statistically cheap. But cheap on a trailing multiple with underlying earnings guided down 25-30% and a structural, policy-dependent segment problem with no resolution timeline is not obviously undervalued — it's a business correctly priced for continued uncertainty. Rating: BEARISH. Full results land 31 August with segment detail; the ITAC tariff decision, whenever it comes, is the only catalyst that changes this thesis in either direction.</p>
+      </div>
+      <div class="metrics">
+        Review price: <b>R8.27</b> (17 Aug 2026, close) &nbsp;·&nbsp; Trailing P/E: <b>6.83x</b> &nbsp;·&nbsp; P/B: <b>0.70x</b> &nbsp;·&nbsp; ROE (ttm): <b>10.71%</b> &nbsp;·&nbsp; Debt/equity: <b>22.4%</b>
+        <div class="data-note">Forward P/E on guided FY26 HEPS midpoint (~105.5c): ~7.8x — higher than the trailing multiple, since HEPS is falling.</div>
+      </div>
+      <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260817100000&seq=25&scode=">SENS via Sharenet, 17 Aug 2026 10:00</a></div>
+    </div>
+  </details>
+
+  <details class="review-item">
+    <summary class="review-summary">
+      <div class="summary-top">
+        <div class="summary-left">
+          <span class="rating NEUTRAL">NEUTRAL</span>
+          <span class="company">South Ocean Holdings</span>
+          <span class="ticker">(SOH)</span>
+          <span class="review-num">Review #1</span>
+        </div>
+        <span class="date-tag">17 Aug 2026</span>
+      </div>
+      <div class="headline">Trading Statement — Year Ended 30 June 2026</div>
+      <div class="verdict-preview">EPS/HEPS swing from a 9.31c loss to 8.02c profit — a genuine return to the black, and the market rewarded it with a 25% single-day rally. But this is a two-sentence trading statement with zero explanation of what drove the turnaround, on a stock so thin its Yahoo fundamentals are still showing last year's loss.</div>
+    </summary>
+    <div class="details-body">
+      <div class="analysis">
+        <p>South Ocean's trading statement is unusually bare: one sentence of substance, stating that both EPS and HEPS for the year to June 2026 moved from a loss of 9.31c per share to earnings of 8.02c — a 186.1% swing. No commentary on revenue, margins, segment performance, or what specifically changed. For a JSE Listings Requirements-mandated trading statement (triggered because results differ by more than 20% from the prior period), that bare-bones disclosure is itself informative: this is a company under no obligation to explain itself beyond the minimum, and it hasn't.</p>
+        <p>The market's reaction — a 25% single-day rally to R1.00 — says the swing to profitability was unambiguously good news to whoever was trading the stock. But South Ocean is a genuine micro-cap: average 3-month volume of roughly 7,000 shares a day, a market capitalisation in the low hundreds of millions of rand, and insider ownership above 75%, meaning the free float trading this news is small. Trailing fundamentals (which won't yet reflect this improved year) still show a business with negative return on equity (-2.29%), negative trailing operating cash flow (-R92.9m) and free cash flow (-R126.5m), and debt-to-equity of 37% against a company that's only just turned profitable on paper. Book value per share of R3.50 against a R1.00 share price implies a statistically striking 0.29x price-to-book — but a P/B that low on a company with negative operating cash flow is as often a warning about earnings quality or balance-sheet risk as it is a bargain signal.</p>
+        <p>The core problem for a value investor is that there isn't enough information here to distinguish "genuine operational turnaround" from "one good year on a small, volatile base." No detail was given on whether the swing came from volume recovery, margin improvement, or a one-off item, and operating cash flow — the number that would confirm whether the earnings are real cash or working-capital timing — won't be visible until full results. Rating: NEUTRAL. The direction of travel is positive and the size of the swing is real, but this is a speculative, thinly-traded small cap where the trading statement raises as many questions as it answers. Worth watching the full results for confirmation, not a name to size meaningfully on this announcement alone.</p>
+      </div>
+      <div class="metrics">
+        Review price: <b>R1.00</b> (17 Aug 2026, +25% on the day) &nbsp;·&nbsp; P/B (mrq): <b>~0.29x</b> &nbsp;·&nbsp; Debt/equity: <b>37.0%</b> &nbsp;·&nbsp; ROE (ttm): <b>-2.29%</b> (pre-turnaround, stale)
+        <div class="data-note">Illiquid micro-cap: ~7k average daily volume. Yahoo Finance fundamentals reflect the prior loss-making year and have not yet updated for today's trading statement.</div>
+      </div>
+      <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260817154700&seq=43&scode=">SENS via Sharenet, 17 Aug 2026 15:47</a></div>
+    </div>
+  </details>
+
+  <details class="review-item">
+    <summary class="review-summary">
+      <div class="summary-top">
+        <div class="summary-left">
+          <span class="rating NEUTRAL">NEUTRAL</span>
+          <span class="company">KAP Limited</span>
+          <span class="ticker">(KAP)</span>
+          <span class="review-num">Review #1</span>
+        </div>
+        <span class="date-tag">14 Aug 2026</span>
+      </div>
+      <div class="headline">Updated Trading Statement for the Year Ended 30 June 2026</div>
+      <div class="verdict-preview">HEPS guided up 82–92% to 43.8–46.2c — but that's the flattering number. Unadjusted EPS swings to a loss (-6.2c to -3.8c) because three separate impairments (Restonic, Safripol, Optix) eat the gain. Real debt paydown is the genuine positive here.</div>
+    </summary>
+    <div class="details-body">
+      <div class="analysis">
+        <p>KAP's headline earnings per share look like a turnaround story: guided to rise 82–92% to between 43.8c and 46.2c for FY26, versus 24.1c in FY25. That's driven by higher operating profit, lower net finance costs, and tax incentives tied to PG Bison's new medium-density fibreboard (MDF) line ramping up — genuine operating leverage, not accounting sleight of hand. Net debt was also cut by more than R1 billion, ahead of the company's own R500 million target, funded mostly by stronger cash generation. That's a real balance-sheet improvement worth crediting.</p>
+        <p>But HEPS is the flattering number in this statement. Unadjusted EPS is guided to swing from a small FY25 profit (0.4c) to a loss of between 3.8c and 6.2c in FY26. The gap is entirely impairments: goodwill on Restonic (the Sleep Group bedding acquisition) written down on weak domestic bedding demand; Safripol intangibles impaired because a stronger rand and depressed global polymer margins aren't expected to recover before 2030; and Optix intangibles impaired on continued underperformance in its Australian operations. Headline earnings measures exclude impairments by design — which is exactly why relying on HEPS alone here would miss that three separate acquisitions are being written down in a single trading statement.</p>
+        <p>That's the real signal for a value investor: this isn't one clean one-off — it's three unrelated units disappointing against the price KAP originally paid for them. That's a capital-allocation and quality-of-earnings flag, not just noise. At the same time, the underlying industrial businesses (PG Bison in particular) are genuinely improving, and the balance sheet is measurably stronger. Rating: NEUTRAL. Cheap-looking on a forward HEPS multiple, but wait for the 1 September full results and segment detail before treating the headline growth number at face value.</p>
+      </div>
+      <div class="metrics">
+        Review price: <b>R2.86</b> (14 Aug 2026, 15-min delayed) &nbsp;·&nbsp; Implied forward P/E on guided HEPS midpoint (~45c): <b>~6.4x</b>
+        <div class="data-note">P/B, ROE and peer multiples not available for this review — fundamentals feed was not yet wired up on 14 Aug.</div>
+      </div>
+      <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260814140000&seq=41&scode=">SENS via Sharenet, 14 Aug 2026 14:00</a></div>
+    </div>
+  </details>
+
+  <details class="review-item">
+    <summary class="review-summary">
+      <div class="summary-top">
+        <div class="summary-left">
+          <span class="rating NEUTRAL">NEUTRAL</span>
+          <span class="company">Exxaro Resources</span>
+          <span class="ticker">(EXX)</span>
+          <span class="review-num">Review #1</span>
+        </div>
+        <span class="date-tag">14 Aug 2026</span>
+      </div>
+      <div class="headline">Trading Statement for the Six-Month Period Ended 30 June 2026</div>
+      <div class="verdict-preview">HEPS guided down 18–23% — but EBITDA is broadly flat. The drag is almost entirely equity-accounted associate income (Sishen Iron Ore, Black Mountain Mining), not Exxaro's own coal operations.</div>
+    </summary>
+    <div class="details-body">
+      <div class="analysis">
+        <p>Exxaro's headline earnings per share for H1 2026 is guided to fall 18–23%, to between 1,327c and 1,414c, versus 1,724c in H1 2025. Attributable EPS is guided to fall by the same range for the same reasons. Read in isolation, that looks like a meaningful earnings deterioration for one of the JSE's larger diversified miners.</p>
+        <p>The more useful number in the statement is EBITDA, which is expected to be broadly in line with H1 2025. That matters because it tells you the decline is not coming from Exxaro's own coal and energy operations — it's coming from equity-accounted income at two associates: Sishen Iron Ore Company (SIOC), hit by rand strength and above-inflation input cost increases linked to Middle East conflict spillover, and Black Mountain Mining (BMM), where higher production costs and a delayed ramp-up at the Gamsberg zinc project weighed on results. Both are known, largely operational (not structural) issues rather than a sign Exxaro's core business is weakening.</p>
+        <p>For a value investor, that distinction matters: a flat-EBITDA, HEPS-down-on-associate-drag statement is a materially different quality signal than a genuine core-earnings decline. Exxaro's coal and energy franchise remains the more important driver of intrinsic value here, and it's holding up. Rating: NEUTRAL, leaning constructive — the headline decline is real but substantially explained by temporary, associate-level factors. Full reviewed results due 20 August will show segment detail and the balance sheet.</p>
+      </div>
+      <div class="metrics">
+        Review price: <b>R185.32</b> (14 Aug 2026, 15-min delayed) &nbsp;·&nbsp; Crude annualised P/E on guided H1 HEPS midpoint: <b>~6.8x</b>
+        <div class="data-note">P/B, ROE, gearing and peer multiples not available for this review — same data-feed gap as above.</div>
+      </div>
+      <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260814070500&seq=5&scode=">SENS via Sharenet, 14 Aug 2026 07:05</a></div>
+    </div>
+  </details>
+
+  <details class="review-item">
+    <summary class="review-summary">
+      <div class="summary-top">
+        <div class="summary-left">
+          <span class="rating BEARISH">BEARISH</span>
+          <span class="company">Copper 360</span>
+          <span class="ticker">(CPR)</span>
+          <span class="review-num">Review #1</span>
+        </div>
+        <span class="date-tag">14 Aug 2026</span>
+      </div>
+      <div class="headline">Audited Annual Financial Statements for the Year Ended 28 February 2026, Change Statement</div>
+      <div class="verdict-preview">Loss per share "improved" — but only because heavy share dilution from a debt-for-equity recapitalisation spread a bigger loss over more shares. Revenue is flat. No path to profitability shown yet.</div>
+    </summary>
+    <div class="details-body">
+      <div class="analysis">
+        <p>On the surface, Copper 360's headline loss per share improved 19.1% to -27.36c (from -33.82c) and basic loss per share improved 38.9% to -27.87c. That reads like progress. It isn't, in the way that matters most: revenue was essentially flat, down 0.4% to R143.2 million, while the actual loss after tax got worse, up 14.2% to R366.8 million. The per-share improvement is a dilution artefact — the company issued shares to extinguish financial liabilities and reacquire royalty rights as part of a recapitalisation and debt restructuring, so a bigger loss is now spread across more shares.</p>
+        <p>There is one genuine positive: the auditors (Moore Pretoria) issued an unmodified opinion with no going-concern emphasis of matter. For a small-cap copper miner that just went through a recapitalisation, a clean audit opinion is meaningful — it suggests the immediate solvency risk has been addressed. No dividend was declared, consistent with the prior year and unsurprising for a loss-making business.</p>
+        <p>For a value investor the core problem is unchanged: there's no revenue growth and no visible path to profitability in this announcement. Rating: BEARISH. The improved per-share loss is not evidence of a turnaround — it's evidence of dilution. Wait for clear signs of revenue growth or margin recovery before treating this as investable.</p>
+      </div>
+      <div class="metrics">
+        Review price: <b>R0.54</b> (14 Aug 2026, 15-min delayed) &nbsp;·&nbsp; P/E: not meaningful (loss-making)
+        <div class="data-note">P/B and share count post-dilution not available for this review — same data-feed gap as above.</div>
+      </div>
+      <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260814170500&seq=50&scode=">SENS via Sharenet, 14 Aug 2026 17:05</a></div>
+    </div>
+  </details>
+
 </main>
 
 <footer>
