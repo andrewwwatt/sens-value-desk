@@ -24,6 +24,40 @@
   nav.sitenav a { color: #205081; text-decoration: none; margin-right: 16px; }
   nav.sitenav a:hover { text-decoration: underline; }
   main { max-width: 860px; margin: 0 auto; padding: 20px; }
+  .filter-bar {
+    margin-bottom: 18px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  .filter-bar input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    font-family: Helvetica, Arial, sans-serif;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: #fff;
+    color: var(--ink);
+  }
+  .filter-bar input:focus {
+    outline: none;
+    border-color: #205081;
+  }
+  .filter-count {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .review-item.filtered-out { display: none; }
+  .no-results {
+    display: none;
+    font-family: Helvetica, Arial, sans-serif;
+    color: var(--muted);
+    font-size: 0.92rem;
+    padding: 20px;
+    text-align: center;
+  }
   details.review-item {
     background: var(--card);
     border: 1px solid var(--border);
@@ -107,6 +141,11 @@
 </header>
 
 <main>
+
+  <div class="filter-bar">
+    <input type="text" id="companyFilter" placeholder="Filter by company name or ticker…" autocomplete="off" oninput="filterReviews()">
+    <span class="filter-count" id="filterCount"></span>
+  </div>
 
   <details class="review-item">
     <summary class="review-summary">
@@ -304,11 +343,33 @@
     </div>
   </details>
 
+
+  <p class="no-results" id="noResults">No reviews match that filter.</p>
+
 </main>
 
 <footer>
   SENS Value Desk · Independent JSE SENS analysis, built for comparison against tickertalk.co.za · Not financial advice
 </footer>
 
+
+<script>
+  function filterReviews() {
+    const q = document.getElementById('companyFilter').value.trim().toLowerCase();
+    const items = document.querySelectorAll('.review-item');
+    let shown = 0;
+    items.forEach(item => {
+      const text = item.querySelector('.summary-left').textContent.toLowerCase();
+      const matches = q === '' || text.includes(q);
+      item.classList.toggle('filtered-out', !matches);
+      if (matches) shown++;
+    });
+    const total = items.length;
+    const countEl = document.getElementById('filterCount');
+    countEl.textContent = q === '' ? total + ' review' + (total === 1 ? '' : 's') + ' total' : 'Showing ' + shown + ' of ' + total + ' reviews';
+    document.getElementById('noResults').style.display = shown === 0 ? 'block' : 'none';
+  }
+  document.addEventListener('DOMContentLoaded', filterReviews);
+</script>
 </body>
 </html>
