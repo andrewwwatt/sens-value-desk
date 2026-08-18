@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENS Value Desk — 14 August 2026 (Test Run)</title>
+<style>
+  :root {
+    --bull: #1a7f37;
+    --bear: #c0341d;
+    --neutral: #9a6b00;
+    --bg: #fafaf8;
+    --card: #ffffff;
+    --ink: #1c1c1c;
+    --muted: #6b6b6b;
+    --border: #e3e1db;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  header {
+    padding: 28px 20px 18px;
+    border-bottom: 3px solid var(--ink);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  header h1 {
+    font-size: 1.6rem;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  header .tagline {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  header .datebar {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+  nav.sitenav {
+    max-width: 860px;
+    margin: 12px auto 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+  }
+  nav.sitenav a {
+    color: #205081;
+    text-decoration: none;
+    margin-right: 16px;
+  }
+  nav.sitenav a:hover { text-decoration: underline; }
+  .banner {
+    max-width: 860px;
+    margin: 16px auto 0;
+    padding: 12px 16px;
+    background: #fff7e6;
+    border: 1px solid #e6c675;
+    border-radius: 4px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    color: #5c4400;
+  }
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .review {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+  }
+  .review-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .company {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .ticker {
+    font-family: Helvetica, Arial, sans-serif;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .rating {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .rating.BULLISH { background: var(--bull); }
+  .rating.BEARISH { background: var(--bear); }
+  .rating.NEUTRAL { background: var(--neutral); }
+  .headline {
+    font-style: italic;
+    color: var(--muted);
+    margin: 2px 0 14px;
+    font-size: 0.98rem;
+  }
+  .verdict {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.95rem;
+    background: #f3f2ee;
+    border-left: 3px solid var(--ink);
+    padding: 10px 14px;
+    margin-bottom: 14px;
+  }
+  .analysis p { margin: 0 0 12px; }
+  .metrics {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    border-top: 1px dashed var(--border);
+    padding-top: 10px;
+    margin-top: 14px;
+  }
+  .metrics b { color: var(--ink); }
+  .data-note {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.78rem;
+    color: #a35b00;
+    margin-top: 6px;
+  }
+  .source {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.82rem;
+    margin-top: 12px;
+  }
+  .source a { color: #205081; }
+  section.filter-log {
+    background: #f3f2ee;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.88rem;
+    color: #333;
+  }
+  section.filter-log h2 {
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+    margin-top: 0;
+  }
+  section.filter-log ul { margin: 6px 0 16px; padding-left: 20px; }
+  section.filter-log li { margin-bottom: 4px; }
+  .compare {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.88rem;
+    background: #eef2f6;
+    border: 1px solid #c9d6e3;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 22px;
+  }
+  footer {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SENS Value Desk</h1>
+  <div class="tagline">Independent JSE SENS analysis · value-investing lens</div>
+  <div class="datebar">📅 14 August 2026 &nbsp;·&nbsp; TEST RUN — not yet on the daily schedule &nbsp;·&nbsp; 🟢 1 Bullish &nbsp; 🟡 1 Neutral &nbsp; 🔴 1 Bearish</div>
+  <nav class="sitenav">
+    <a href="../index.html">Today</a>
+    <a href="index.html">Archive</a>
+    <a href="../ratings.html">Ratings Tracker</a>
+  </nav>
+</header>
+
+<div class="banner">
+  <strong>This is a proof-of-concept run, not a live daily edition.</strong> Built to confirm the data source, filtering logic, and analysis format before this is automated on a weekday schedule and pushed to a permanent site. Reviews below use the most recent SENS announcements with full source text available (14 Aug 2026) — see the data-source note in each review.
+</div>
+
+<main>
+
+  <section class="review">
+    <div class="review-head">
+      <span><span class="company">KAP Limited</span> <span class="ticker">(KAP)</span></span>
+      <span class="rating NEUTRAL">NEUTRAL</span>
+    </div>
+    <div class="headline">Updated Trading Statement for the Year Ended 30 June 2026</div>
+    <div class="verdict">HEPS guided up 82–92% to 43.8–46.2c — but that's the flattering number. Unadjusted EPS swings to a loss (-6.2c to -3.8c) because three separate impairments (Restonic, Safripol, Optix) eat the gain. Real debt paydown is the genuine positive here.</div>
+    <div class="analysis">
+      <p>KAP's headline earnings per share look like a turnaround story: guided to rise 82–92% to between 43.8c and 46.2c for FY26, versus 24.1c in FY25. That's driven by higher operating profit, lower net finance costs, and tax incentives tied to PG Bison's new medium-density fibreboard (MDF) line ramping up — genuine operating leverage, not accounting sleight of hand. Net debt was also cut by more than R1 billion, ahead of the company's own R500 million target, funded mostly by stronger cash generation. That's a real balance-sheet improvement worth crediting.</p>
+      <p>But HEPS is the flattering number in this statement. Unadjusted EPS is guided to swing from a small FY25 profit (0.4c) to a loss of between 3.8c and 6.2c in FY26. The gap is entirely impairments: goodwill on Restonic (the Sleep Group bedding acquisition) written down on weak domestic bedding demand; Safripol intangibles impaired because a stronger rand and depressed global polymer margins aren't expected to recover before 2030; and Optix intangibles impaired on continued underperformance in its Australian operations. Headline earnings measures exclude impairments by design — which is exactly why relying on HEPS alone here would miss that three separate acquisitions are being written down in a single trading statement.</p>
+      <p>That's the real signal for a value investor: this isn't one clean one-off (the way Grindrod's FX-gain comparison was last week) — it's three unrelated units disappointing against the price KAP originally paid for them. That's a capital-allocation and quality-of-earnings flag, not just noise. At the same time, the underlying industrial businesses (PG Bison in particular) are genuinely improving, and the balance sheet is measurably stronger. Rating: NEUTRAL. Cheap-looking on a forward HEPS multiple, but wait for the 1 September full results and segment detail before treating the headline growth number at face value.</p>
+    </div>
+    <div class="metrics">
+      Last price: <b>R2.86</b> (14 Aug 2026, 15-min delayed) &nbsp;·&nbsp; Implied forward P/E on guided HEPS midpoint (~45c): <b>~6.4x</b>
+      <div class="data-note">P/B, ROE and peer multiples not yet available — this pipeline doesn't have a fundamentals data feed wired up yet (flagged as an open item, see note to Andrew).</div>
+    </div>
+    <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260814140000&seq=41&scode=">SENS via Sharenet, 14 Aug 2026 14:00</a></div>
+  </section>
+
+  <section class="review">
+    <div class="review-head">
+      <span><span class="company">Exxaro Resources</span> <span class="ticker">(EXX)</span></span>
+      <span class="rating NEUTRAL">NEUTRAL</span>
+    </div>
+    <div class="headline">Trading Statement for the Six-Month Period Ended 30 June 2026</div>
+    <div class="verdict">HEPS guided down 18–23% — but EBITDA is broadly flat. The drag is almost entirely equity-accounted associate income (Sishen Iron Ore, Black Mountain Mining), not Exxaro's own coal operations.</div>
+    <div class="analysis">
+      <p>Exxaro's headline earnings per share for H1 2026 is guided to fall 18–23%, to between 1,327c and 1,414c, versus 1,724c in H1 2025. Attributable EPS is guided to fall by the same range for the same reasons. Read in isolation, that looks like a meaningful earnings deterioration for one of the JSE's larger diversified miners.</p>
+      <p>The more useful number in the statement is EBITDA, which is expected to be broadly in line with H1 2025. That matters because it tells you the decline is not coming from Exxaro's own coal and energy operations — it's coming from equity-accounted income at two associates: Sishen Iron Ore Company (SIOC), hit by rand strength and above-inflation input cost increases linked to Middle East conflict spillover, and Black Mountain Mining (BMM), where higher production costs and a delayed ramp-up at the Gamsberg zinc project weighed on results. Both are known, largely operational (not structural) issues rather than a sign Exxaro's core business is weakening.</p>
+      <p>For a value investor, that distinction matters: a flat-EBITDA, HEPS-down-on-associate-drag statement is a materially different quality signal than a genuine core-earnings decline. Exxaro's coal and energy franchise remains the more important driver of intrinsic value here, and it's holding up. Rating: NEUTRAL, leaning constructive — the headline decline is real but substantially explained by temporary, associate-level factors (Gamsberg ramp-up in particular should resolve). Full reviewed results due 20 August will show segment detail and the balance sheet; that's the point to firm up the view given Exxaro's historically conservative gearing.</p>
+    </div>
+    <div class="metrics">
+      Last price: <b>R185.32</b> (14 Aug 2026, 15-min delayed) &nbsp;·&nbsp; Crude annualised P/E on guided H1 HEPS midpoint (~1,370c doubled): <b>~6.8x</b> — treat as an approximation only, commodity earnings are not linear across H1/H2
+      <div class="data-note">P/B, ROE, gearing and peer multiples not yet available — same data-feed gap as above.</div>
+    </div>
+    <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260814070500&seq=5&scode=">SENS via Sharenet, 14 Aug 2026 07:05</a></div>
+  </section>
+
+  <section class="review">
+    <div class="review-head">
+      <span><span class="company">Copper 360</span> <span class="ticker">(CPR)</span></span>
+      <span class="rating BEARISH">BEARISH</span>
+    </div>
+    <div class="headline">Audited Annual Financial Statements for the Year Ended 28 February 2026, Change Statement</div>
+    <div class="verdict">Loss per share "improved" — but only because heavy share dilution from a debt-for-equity recapitalisation spread a bigger loss over more shares. Revenue is flat. No path to profitability shown yet.</div>
+    <div class="analysis">
+      <p>On the surface, Copper 360's headline loss per share improved 19.1% to -27.36c (from -33.82c) and basic loss per share improved 38.9% to -27.87c. That reads like progress. It isn't, in the way that matters most: revenue was essentially flat, down 0.4% to R143.2 million, while the actual loss after tax got worse, up 14.2% to R366.8 million. The per-share improvement is a dilution artefact — the company issued shares to extinguish financial liabilities and reacquire royalty rights as part of a recapitalisation and debt restructuring, so a bigger loss is now spread across more shares. That is the textbook case for why headline per-share figures need to be read alongside the underlying totals, not instead of them.</p>
+      <p>There is one genuine positive: the auditors (Moore Pretoria) issued an unmodified opinion with no going-concern emphasis of matter. For a small-cap copper miner that just went through a recapitalisation, a clean audit opinion is meaningful — it suggests the immediate solvency risk has been addressed, at least in the auditor's judgement. No dividend was declared, consistent with the prior year and unsurprising for a loss-making business.</p>
+      <p>For a value investor the core problem is unchanged: there's no revenue growth and no visible path to profitability in this announcement. The recapitalisation may have bought time and patched the capital structure, but it hasn't fixed the operating business. Rating: BEARISH. The improved per-share loss is not evidence of a turnaround — it's evidence of dilution. Wait for clear signs of revenue growth or margin recovery before treating this as investable; right now it's a balance-sheet repair story with an unproven operating thesis attached.</p>
+    </div>
+    <div class="metrics">
+      Last price: <b>R0.54</b> (14 Aug 2026, 15-min delayed) &nbsp;·&nbsp; P/E: not meaningful (loss-making)
+      <div class="data-note">P/B and share count post-dilution not yet available — same data-feed gap as above.</div>
+    </div>
+    <div class="source">📄 Source: <a href="https://www.sharenet.co.za/v3/sens_display.php?tdate=20260814170500&seq=50&scode=">SENS via Sharenet, 14 Aug 2026 17:05</a></div>
+  </section>
+
+  <div class="compare">
+    <strong>Comparison vs tickertalk.co.za:</strong> No overlap available for this test batch — tickertalk's most recent published edition (12 Aug 2026) covered a different set of companies (Weaver Fintech, Shoprite, Sebata, Resilient REIT, Powerfleet, Impala Platinum, Grindrod, Cilo Cybin), none of which are KAP, Exxaro or Copper 360. Once this runs on the same weekday schedule as tickertalk, same-day ticker overlap — and a real side-by-side rating comparison — should become the norm rather than the exception.
+  </div>
+
+  <section class="filter-log">
+    <h2>Filtering log — 14 Aug 2026</h2>
+    <p>Sharenet's SENS headline feed listed roughly 40 announcements for 14 Aug 2026. Three were selected for full analysis above. For transparency, here's how the rest were triaged:</p>
+    <p><strong>Also flagged as significant, not yet written up in this test</strong> (would be covered in a full daily run):</p>
+    <ul>
+      <li>Stadio Holdings (SDO) — Voluntary Trading Statement</li>
+      <li>Blu Label Unlimited Group (BLU) — Trading Statement, year ended 31 May 2026</li>
+      <li>Dipula Properties (DIB) — Further Cautionary Announcement</li>
+      <li>Cafca (CAC) — Trading Update, Q3 ended 30 June 2026</li>
+      <li>Globe Trade Centre S.A. (GTC) — Review of strategic options by majority shareholder</li>
+    </ul>
+    <p><strong>Filtered out as routine/administrative noise</strong> (examples from the same day):</p>
+    <ul>
+      <li>New financial instrument / bond listings and redemptions — Absa, Standard Bank, FirstRand, Nedbank, Goldman Sachs structured notes (9 instances)</li>
+      <li>ETF/fund mechanics — Satrix and 1nvest partial listings, delistings and redemptions (6 instances)</li>
+      <li>Routine director/associate dealings with no disclosed value threshold — Vunani, Salungano, Marshall Monteagle, Stefanutti Stocks (4 instances)</li>
+      <li>AGM results notices (administrative) — PBT Holdings, Huge Group</li>
+      <li>Foreign dual-listed PDMR/TR-1 holding notifications (UK Takeover Code mechanics, not SA-relevant investment signals) — Quilter, Jubilee Metals, Bytes Technology, Supermarket Income REIT</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  SENS Value Desk · Independent JSE SENS analysis, built for comparison against tickertalk.co.za · Not financial advice · Data: Sharenet SENS feed (15-min delayed)
+</footer>
+
+</body>
+</html>
