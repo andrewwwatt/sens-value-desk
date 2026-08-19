@@ -8,59 +8,31 @@
   :root { --bull: #1a7f37; --bear: #c0341d; --neutral: #9a6b00; --ink: #1c1c1c; --muted: #6b6b6b; --border: #e3e1db; --bg: #fafaf8; }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--ink); line-height: 1.55; }
-  header { padding: 28px 20px 18px; border-bottom: 3px solid var(--ink); max-width: 960px; margin: 0 auto; }
+  header { padding: 28px 20px 18px; border-bottom: 3px solid var(--ink); max-width: 900px; margin: 0 auto; }
   header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
   header .tagline { font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-  nav.sitenav { max-width: 960px; margin: 12px auto 0; font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; }
+  nav.sitenav { max-width: 900px; margin: 12px auto 0; font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; }
   nav.sitenav a { color: #205081; text-decoration: none; margin-right: 16px; }
   nav.sitenav a:hover { text-decoration: underline; }
-  main { max-width: 960px; margin: 0 auto; padding: 20px; }
-  .table-wrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; font-family: Helvetica, Arial, sans-serif; font-size: 0.86rem; }
-  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
-  td.company-cell { white-space: normal; }
+  main { max-width: 900px; margin: 0 auto; padding: 20px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; font-family: Helvetica, Arial, sans-serif; font-size: 0.88rem; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
   th { background: #f3f2ee; font-weight: 700; }
-  .review-num { color: var(--muted); font-size: 0.78rem; }
-  .rating { font-weight: 700; font-size: 0.74rem; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 3px; color: #fff; white-space: nowrap; }
+  .rating { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 3px; color: #fff; white-space: nowrap; }
   .rating.BULLISH { background: var(--bull); }
   .rating.BEARISH { background: var(--bear); }
   .rating.NEUTRAL { background: var(--neutral); }
   .rating.NA { background: #b9b6ac; }
-  .comparison {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 0.92rem;
-    margin-top: 24px;
-  }
-  .comparison h2 { font-family: Georgia, serif; font-size: 1.15rem; margin-bottom: 6px; }
-  .comparison .agree-box {
-    background: #eef6ee;
-    border: 1px solid #bfe0bf;
-    border-radius: 6px;
-    padding: 14px 18px;
-    margin-bottom: 16px;
-  }
-  .comparison .disagree-box {
-    background: #fdf1ee;
-    border: 1px solid #e6bcae;
-    border-radius: 6px;
-    padding: 14px 18px;
-    margin-bottom: 16px;
-  }
-  .comparison .disagree-item { margin-bottom: 10px; }
-  .comparison .disagree-item:last-child { margin-bottom: 0; }
-  .comparison .not-compared {
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-  .methodology {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-top: 16px;
-    padding-top: 12px;
-    border-top: 1px dashed var(--border);
-  }
-  footer { max-width: 960px; margin: 0 auto; padding: 20px; font-family: Helvetica, Arial, sans-serif; font-size: 0.78rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); }
+  .review-num { font-family: Helvetica, Arial, sans-serif; font-size: 0.72rem; color: var(--muted); }
+  .comparison { margin-top: 28px; font-family: Helvetica, Arial, sans-serif; font-size: 0.9rem; }
+  .comparison h2 { font-family: Georgia, serif; font-size: 1.2rem; margin-bottom: 14px; }
+  .agree-box { background: #eaf5ee; border: 1px solid #bfe0cb; border-radius: 6px; padding: 14px 18px; margin-bottom: 14px; font-size: 0.9rem; }
+  .disagree-box { background: #fbeceb; border: 1px solid #eec3c0; border-radius: 6px; padding: 14px 18px; font-size: 0.9rem; }
+  .disagree-item { margin-bottom: 10px; }
+  .disagree-item:last-child { margin-bottom: 0; }
+  .not-compared { color: var(--muted); font-size: 0.82rem; margin-top: 14px; }
+  .methodology { margin-top: 20px; font-family: Helvetica, Arial, sans-serif; font-size: 0.78rem; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 12px; }
+  footer { max-width: 900px; margin: 0 auto; padding: 20px; font-family: Helvetica, Arial, sans-serif; font-size: 0.78rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); }
 </style>
 </head>
 <body>
@@ -76,83 +48,36 @@
 </header>
 
 <main>
-  <div class="table-wrap">
   <table>
     <tr><th>Date</th><th>Company</th><th>Rating</th><th>Tickertalk</th><th>Total Return</th><th>Trigger</th></tr>
-    <tr>
-      <td>17 Aug 2026</td>
-      <td class="company-cell">Thungela Resources (TGA) <span class="review-num">· Review #1</span></td>
-      <td><span class="rating BULLISH">BULLISH</span></td>
-      <td><span class="rating BULLISH">BULLISH</span></td>
-      <td>—</td>
-      <td>Interim results + dividend</td>
-    </tr>
-    <tr>
-      <td>17 Aug 2026</td>
-      <td class="company-cell">The SPAR Group (SPP) <span class="review-num">· Review #1</span></td>
-      <td><span class="rating BEARISH">BEARISH</span></td>
-      <td><span class="rating BEARISH">BEARISH</span></td>
-      <td>—</td>
-      <td>Chairman &amp; deputy chair resignation</td>
-    </tr>
-    <tr>
-      <td>17 Aug 2026</td>
-      <td class="company-cell">RCL Foods (RCL) <span class="review-num">· Review #1</span></td>
-      <td><span class="rating BEARISH">BEARISH</span></td>
-      <td><span class="rating BEARISH">BEARISH</span></td>
-      <td>—</td>
-      <td>Trading statement</td>
-    </tr>
-    <tr>
-      <td>17 Aug 2026</td>
-      <td class="company-cell">South Ocean Holdings (SOH) <span class="review-num">· Review #1</span></td>
-      <td><span class="rating NEUTRAL">NEUTRAL</span></td>
-      <td><span class="rating BULLISH">BULLISH</span></td>
-      <td>—</td>
-      <td>Trading statement</td>
-    </tr>
-    <tr>
-      <td>14 Aug 2026</td>
-      <td class="company-cell">KAP Limited (KAP) <span class="review-num">· Review #1</span></td>
-      <td><span class="rating NEUTRAL">NEUTRAL</span></td>
-      <td><span class="rating NA">N/A</span></td>
-      <td>—</td>
-      <td>Trading statement</td>
-    </tr>
-    <tr>
-      <td>14 Aug 2026</td>
-      <td class="company-cell">Exxaro Resources (EXX) <span class="review-num">· Review #1</span></td>
-      <td><span class="rating NEUTRAL">NEUTRAL</span></td>
-      <td><span class="rating NA">N/A</span></td>
-      <td>—</td>
-      <td>Trading statement</td>
-    </tr>
-    <tr>
-      <td>14 Aug 2026</td>
-      <td class="company-cell">Copper 360 (CPR) <span class="review-num">· Review #1</span></td>
-      <td><span class="rating BEARISH">BEARISH</span></td>
-      <td><span class="rating NA">N/A</span></td>
-      <td>—</td>
-      <td>Annual results</td>
-    </tr>
+    <tr><td>18 Aug 2026</td><td>NEPI Rockcastle (NRP) <span class="review-num">· Review #1</span></td><td><span class="rating BULLISH">BULLISH</span></td><td><span class="rating BULLISH">BULLISH</span></td><td>—</td><td>Interim results + distribution</td></tr>
+    <tr><td>18 Aug 2026</td><td>Trustco Group Holdings (TTO) <span class="review-num">· Review #1</span></td><td><span class="rating BEARISH">BEARISH</span></td><td><span class="rating NEUTRAL">NEUTRAL</span></td><td>—</td><td>Requisitioned general meeting</td></tr>
+    <tr><td>18 Aug 2026</td><td>BHP Group (BHG) <span class="review-num">· Review #1</span></td><td><span class="rating BULLISH">BULLISH</span></td><td><span class="rating BULLISH">BULLISH</span></td><td>—</td><td>FY2026 results + dividend</td></tr>
+    <tr><td>18 Aug 2026</td><td>Absa Group (ABG) <span class="review-num">· Review #1</span></td><td><span class="rating BULLISH">BULLISH</span></td><td><span class="rating BULLISH">BULLISH</span></td><td>—</td><td>Interim results + dividend</td></tr>
+    <tr><td>17 Aug 2026</td><td>Thungela Resources (TGA) <span class="review-num">· Review #1</span></td><td><span class="rating BULLISH">BULLISH</span></td><td><span class="rating BULLISH">BULLISH</span></td><td>—</td><td>Interim results + dividend</td></tr>
+    <tr><td>17 Aug 2026</td><td>The SPAR Group (SPP) <span class="review-num">· Review #1</span></td><td><span class="rating BEARISH">BEARISH</span></td><td><span class="rating BEARISH">BEARISH</span></td><td>—</td><td>Chairman &amp; deputy chair resignation</td></tr>
+    <tr><td>17 Aug 2026</td><td>RCL Foods (RCL) <span class="review-num">· Review #1</span></td><td><span class="rating BEARISH">BEARISH</span></td><td><span class="rating BEARISH">BEARISH</span></td><td>—</td><td>Trading statement</td></tr>
+    <tr><td>17 Aug 2026</td><td>South Ocean Holdings (SOH) <span class="review-num">· Review #1</span></td><td><span class="rating NEUTRAL">NEUTRAL</span></td><td><span class="rating BULLISH">BULLISH</span></td><td>—</td><td>Trading statement</td></tr>
+    <tr><td>14 Aug 2026</td><td>KAP Limited (KAP) <span class="review-num">· Review #1</span></td><td><span class="rating NEUTRAL">NEUTRAL</span></td><td><span class="rating NA">N/A</span></td><td>—</td><td>Trading statement</td></tr>
+    <tr><td>14 Aug 2026</td><td>Exxaro Resources (EXX) <span class="review-num">· Review #1</span></td><td><span class="rating NEUTRAL">NEUTRAL</span></td><td><span class="rating NA">N/A</span></td><td>—</td><td>Trading statement</td></tr>
+    <tr><td>14 Aug 2026</td><td>Copper 360 (CPR) <span class="review-num">· Review #1</span></td><td><span class="rating BEARISH">BEARISH</span></td><td><span class="rating NA">N/A</span></td><td>—</td><td>Annual results</td></tr>
   </table>
-  </div>
 
   <div class="comparison">
     <h2>SENS Value Desk vs Ticker Talk</h2>
-
     <div class="agree-box">
       <strong>✅ Agreements</strong><br>
-      3 companies where SENS Value Desk and Ticker Talk agree: TGA (both bullish), SPP (both bearish), RCL (both bearish).
+      6 companies where SENS Value Desk and Ticker Talk agree: NRP (both bullish), BHG (both bullish), ABG (both bullish), TGA (both bullish), SPP (both bearish), RCL (both bearish).
     </div>
-
     <div class="disagree-box">
       <strong>⚠️ Disagreements</strong>
       <div class="disagree-item" style="margin-top:8px;">
+        <b>TTO (Trustco Group Holdings):</b> SENS Value Desk BEARISH vs Ticker Talk NEUTRAL. Ticker Talk called the failed board-removal vote "corporate theatre that changes nothing" and stayed Neutral. This desk rates it Bearish — the vote outcome is a non-event, but the underlying fundamentals (negative ROE, ~190% debt-to-equity, negative free cash flow, and a share price showing essentially no active trading) are themselves a reason for caution independent of the governance saga.
+      </div>
+      <div class="disagree-item">
         <b>SOH (South Ocean Holdings):</b> SENS Value Desk NEUTRAL vs Ticker Talk BULLISH. Ticker Talk called the 186% earnings swing bullish "with both hands," speculative but directionally positive. This desk stayed Neutral — the trading statement discloses nothing about what drove the turnaround, and trailing operating cash flow is still negative, so the earnings quality is unconfirmed.
       </div>
     </div>
-
     <p class="not-compared">Not compared: KAP, Exxaro and Copper 360 (14 Aug 2026) — Ticker Talk covered a different set of companies that day, so no overlapping rating exists for these three.</p>
   </div>
 
